@@ -1,17 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using MVC_CRUD.Data;
-using MVC_CRUD.Services;
+using MVC_CRUD.Services.AutoMapperInServiceProfile;
+using MVC_CRUD.Services.ClassServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<ContactService>();
-builder.Services.AddScoped<StudentService>();
+builder.Services.AddScoped<CategoryService>();
 
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DataContext>(options =>options.UseSqlite(connection));
+
+builder.Services.AddAutoMapper(typeof(ServiceProfile));
 
 var app = builder.Build();
 

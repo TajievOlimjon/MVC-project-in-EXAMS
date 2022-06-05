@@ -1,0 +1,43 @@
+﻿@model List<MVC_CRUD.Data.EntitiesDTO.CategoryEntrieDTO>
+
+<div class="row">
+    <div class="col-md-12">
+        <a asp-action="Index" asp-controller="Category" class="btn btn-success">Create</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+            <tr>
+                    <td>ParentId</td>
+                    <td>Title</td> 
+                    <td>MetaTitle</td>
+                    <td>Slug</td>
+                    <td>Content</td>              
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ParentId</td>
+                    <td>@item.Title</td> 
+                    <td>@item.MetaTitle</td>
+                    <td>@item.Slug</td>
+                    <td>@item.Content</td>
+
+                    <td>
+                        <a asp-action="Edit" asp-controller="Category" asp-route-id="@item.Id">
+                            Edit
+                        </a>
+                        <a asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

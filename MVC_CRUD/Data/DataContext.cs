@@ -7,7 +7,21 @@ namespace MVC_CRUD.Data
     {
         public DataContext(DbContextOptions<DataContext> options):base(options){}
 
-        public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Student> Students { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PostTag>().HasKey(sc => new { sc.PostId, sc.TagId });
+            modelBuilder.Entity<PostCategory>().HasKey(sc => new { sc.PostId, sc.CategoryId });
+        }
+       
+
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<PostCategory> PostCategories { get; set; }
+        public DbSet<PostComment> PostComments { get; set; }
+        public DbSet<PostMeta> PostMetas { get; set; }
+        public DbSet<PostTag> PostTags { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+
     }
 }
