@@ -11,11 +11,11 @@ namespace MVC_CRUD.Data.Entities
         [Column("First_Name")]
         public string? FirstName { get; set; }
         [MaxLength(50)]
-        [Column("First_Name")]
+        [Column("Middle_Name")]
         public string? MiddleName { get; set; }
         [MaxLength(50)]
         [Required]
-        [Column("First_Name")]
+        [Column("Last_Name")]
         public string? LastName { get; set; }
         [MaxLength(15)]
         public string? Mobile { get; set; }
